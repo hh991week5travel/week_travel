@@ -15,11 +15,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="/post" element={<Post />} />
-          <Route path="/postDetail/:postId" element={<PostDetail />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/Post" element={<Post />} />
+          <Route path="/PostDetail" element={<PostDetail />} />
         </Routes>
       </BrowserRouter>
     </>

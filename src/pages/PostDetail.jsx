@@ -1,9 +1,9 @@
 import React from 'react'
 
-const postDetail = () => {
+const PostDetail = () => {
   return (
-    <div>postDetail</div>
+    <div>PostDetail</div>
   )
 }
 
-export default postDetail
+export default PostDetail

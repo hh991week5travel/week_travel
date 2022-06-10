@@ -1,9 +1,35 @@
-import React from 'react'
+import React from "react";
 
-const main = () => {
+import styled from "styled-components";
+
+import { Link } from "react-router-dom";
+
+const Main = () => {
   return (
-    <div>main</div>
-  )
-}
+    <>
+      <Link to="/Home">
+        <ADDBUTTON>Home</ADDBUTTON>
+      </Link>
+      <Link to="/Login">
+        <button>Login</button>
+      </Link>
+      <Link to="/Post">
+        <button>Post</button>
+      </Link>
+      <Link to="/PostDetail">
+        <button>PostDetail</button>
+      </Link>
+      <Link to="/SignUp">
+        <button>SignUp</button>
+      </Link>
+    </>
+  );
+};
 
-export default main
+export default Main;
+
+const ADDBUTTON = styled.button`
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+`;
