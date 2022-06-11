@@ -1,10 +1,10 @@
-//게시물 상세 페이지
+//게시물 수정 페이지
 
 import React from 'react'
-import './PostDetail.css'
+import './Post.css'
 import {Link} from 'react-router-dom'
 
-const PostDetail = () => {
+const PostUpdate = () => {
   return (
     <>
       <h1>헤더 들어갈 곳입니다</h1>
@@ -12,13 +12,15 @@ const PostDetail = () => {
 
         <div className='container'>
           <div className='imgBox'>
-            이미지
           </div>
-          <div className='wrap'>
+          <div className='imgUpload'>
+            <input type="file" />
+          </div>
 
+          <div className='wrap'>
             <div className='title'>
               <span>제목</span>
-              <input type="text"/>
+              <input type="text" />
             </div>
 
             <div className='content'>
@@ -31,12 +33,8 @@ const PostDetail = () => {
         </div>
 
         <div className='footer'>
-          <Link to = {`/PostUpdate/`}>
-            <button>수정</button>
-          </Link>
-
-          <Link to = {`/Post`}>
-            <button>삭제</button>
+          <Link to = {`/`}>
+            <button>수정완료</button>
           </Link>
           
         </div>
@@ -46,4 +44,4 @@ const PostDetail = () => {
   )
 }
 
-export default PostDetail;
+export default PostUpdate;
