@@ -12,7 +12,7 @@ const Main = () => {
     <>
       <Header />
       <HomeBody>
-        <Link to='/post'>
+        <Link to='/Post'>
           <WriteButton>
             <LogoImg src="/logo_1.png" />
           </WriteButton>
