@@ -2,34 +2,45 @@ import React from "react";
 
 import styled from "styled-components";
 
+import Header from "../components/Header";
+
 import { Link } from "react-router-dom";
 
 const Main = () => {
+
   return (
     <>
-      <Link to="/Home">
-        <ADDBUTTON>Home</ADDBUTTON>
-      </Link>
-      <Link to="/Login">
-        <button>Login</button>
-      </Link>
-      <Link to="/Post">
-        <button>Post</button>
-      </Link>
-      <Link to="/PostDetail">
-        <button>PostDetail</button>
-      </Link>
-      <Link to="/SignUp">
-        <button>SignUp</button>
-      </Link>
+      <Header />
+      <HomeBody>
+        <Link to='/post'>
+          <WriteButton>
+            <LogoImg src="/logo_1.png" />
+          </WriteButton>
+        </Link>
+
+      </HomeBody>
     </>
   );
 };
 
-export default Main;
-
-const ADDBUTTON = styled.button`
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
+const HomeBody = styled.div`
+  width: 1000px;
+  margin: 90px auto;
+   
 `;
+const WriteButton = styled.button`
+  background: none;
+  border: none;
+  cursor:pointer;
+  `;
+
+const LogoImg = styled.img`
+width: 130px;
+height: 130px;
+border-radius: 130px;
+border: 3px solid #b2e1f4;
+background: white;
+`;
+
+
+export default Main;
