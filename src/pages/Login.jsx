@@ -8,10 +8,14 @@ const callAxios = async () => {
   await axios.get("http://localhost:5001/travel")
 };
 
+import Header from "../components/Header";
+
 const Login = () => {
+
   React.useEffect(() => {
     callAxios();
   }, []);
+
 
   return (
     <div>
