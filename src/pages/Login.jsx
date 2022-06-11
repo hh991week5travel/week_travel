@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 
+import Header from "../components/Header";
+
+
 const callAxios = async () => {
   await axios.get("http://localhost:5001/travel")
 };
 
-import Header from "../components/Header";
 
 const Login = () => {
 
