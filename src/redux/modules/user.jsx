@@ -33,10 +33,10 @@ const loadTokenFB = () => {
 };
 
 // 로그인 액션
-const loginDB = (userId, userPw) => {
+const loginDB = (email, password) => {
   return function (dispatch, getState, {history}) {
     axios
-      .post("http://3.38.179.73/user/login", {
+      .post("http://localhost:5001/travel", {
         email,
         password,
       })
@@ -49,8 +49,8 @@ const loginDB = (userId, userPw) => {
           })
         );
         setCookie("Authorization", response.headers.authorization.split(" ")[1]);
-        setCookie("userId", userId);
-        history.replace("/todoList");
+        setCookie("email", email);
+        history.replace("/Main");
       })
       .catch(error => {
         window.alert("아이디 또는 비밀번호를 확인해주세요.")
@@ -59,26 +59,6 @@ const loginDB = (userId, userPw) => {
   }
 }
 
-// 회원가입 액션
-const signupDB = (userId, userPw, pwCheck) => {
-  return function (dispatch, getState, {history}) {
-    axios
-    .post("http://3.38.179.73/user/join", {
-      userId: userId,
-      userPw: userPw,
-      pwCheck: pwCheck,
-    })
-    .then(response => {
-      console.log(response);
-      window.alert("회원가입을 축하합니다!")
-      history.push("/login")
-    })
-    .catch(error => {
-      alert("중복된 아이디가 존재합니다.");
-      console.log("회원가입 DB Error", error);
-    })
-  };
-};
 
 // 리듀서
 export default handleActions(
@@ -111,7 +91,6 @@ const actionCreators = {
   logOut,
   withdrawal,
   loginDB,
-  signupDB,
   loadTokenFB,
   withdrawalAC,
 };
