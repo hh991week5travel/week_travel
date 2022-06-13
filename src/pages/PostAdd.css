@@ -1,0 +1,43 @@
+h1 {
+  text-align: center;
+}
+
+span {
+  display: table-cell;
+  font-size: 17pt;
+}
+
+
+.container {
+  padding: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.imgUpload {
+position: absolute;
+float: left;
+left: 10px;
+bottom: 600px;
+}
+
+.imgUpload > input {
+  border: none;
+  margin-left: 160px;
+}
+
+.title {
+  margin-bottom: 30px;
+}
+
+.footer {
+  display: flex;
+  justify-content :center;
+  align-items: center;
+  padding: 0 20px 0 20px;
+}
+
+a { 
+  text-decoration: none;
+}
