@@ -10,27 +10,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { __loadPosts } from "../redux/modules/post";
 
 const Main = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-      dispatch(__loadPosts())
-    },[dispatch]);
+  useEffect(() => {
+    dispatch(__loadPosts())
+  }, [dispatch]);
 
-    //{posts} 객체의비구조화 destructing
-    const {posts} = useSelector((state) => state.postReducer)
-    console.log(posts)
+  //{posts} 객체의비구조화 destructing
+  const { posts } = useSelector((state) => state.postReducer)
+  console.log(posts)
 
 
   return (
     <>
       <Header />
-        <HomeBody>
-          <Link to='/PostAdd'>
-            <WriteButton>
-              <LogoImg src="/logo_1.png" />
-            </WriteButton>
-          </Link>
-        </HomeBody>
+      <HomeBody>
+        <Link to='/PostAdd'>
+          <WriteButton>
+            <LogoImg src="/logo_1.png" />
+          </WriteButton>
+        </Link>
+      </HomeBody>
     </>
   );
 };
