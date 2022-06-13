@@ -1,34 +1,49 @@
 import React from 'react'
 import styled from 'styled-components';
+
+import Button from '../elements/Button';
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { actionCreators as userActions } from '../redux/modules/user';
+
 
 
 const Header = (props) => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user.user)
 
 
     return (
 
-        <>
-            <HeaderContainer>
-                <Link to='/Main'>
-                    <img src='logo_1.png'
-                        back_size="100% 100%"
-                        height="100px"
-                        alt='logo' />
-                </Link>
 
-                <ButtonContainer>
-                    <Link to='/'>
-                        <button>
-                            <text size="20px">로그아웃</text>
-                        </button>
-                    </Link>
-                </ButtonContainer>
+        <HeaderContainer>
+            <Link to='/Main'>
+                <img src='logo_1.png'
+                    back_size="100% 100%"
+                    height="100px"
+                    alt='logo' />
+            </Link>
 
-            </HeaderContainer>
+            <ButtonContainer>
+                <Button
+                    text-size="16px"
+                    width="120px"
+                    bg="#F9F7CF"
+                    _onClick={() => {
+                        dispatch(userActions.logOut());
+                        navigate('/')
+                    }}
+                >
+                    <text size="20px">로그아웃</text>
+                </Button>
+            </ButtonContainer>
+
+        </HeaderContainer>
 
 
-        </>
+
 
 
 
