@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 
-import Header from "../components/Header";
+// import Header from "../components/Header";
 
 
 const callAxios = async () => {

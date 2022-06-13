@@ -1,47 +1,36 @@
 //게시물 상세 페이지
 
 import React from 'react'
-import './PostDetail.css'
+import Header from '../components/Header'
+import Image from '../element/Image'
+import Input from '../element/Input'
+import Content from '../element/Content'
+import Button from '../element/Button'
 import {Link} from 'react-router-dom'
 
 const PostDetail = () => {
   return (
     <>
-      <h1>헤더 들어갈 곳입니다</h1>
-      <div>
-
-        <div className='container'>
-          <div className='imgBox'>
-            이미지
-          </div>
-          <div className='wrap'>
-
-            <div className='title'>
-              <span>제목</span>
-              <input type="text"/>
-            </div>
-
-            <div className='content'>
-              <span>내용</span>
-              <textarea name="textarea" rows="10" cols="50" >힘내보자</textarea>
-            </div>
-
-          </div>
-
-        </div>
+    <Header />
+      <div className='container'>
+      <Image />
+      <span>제목</span>
+      <Input />
+      <span>내용</span>
+      <Content />
+      </div>
 
         <div className='footer'>
           <Link to = {`/PostUpdate/`}>
-            <button>수정</button>
+            <Button>수정</Button>
           </Link>
 
-          <Link to = {`/Post`}>
-            <button>삭제</button>
+          <Link to = {`/Main`}>
+            <Button>삭제</Button>
           </Link>
-          
         </div>
 
-      </div>
+
     </>
   )
 }
