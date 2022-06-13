@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styled from "styled-components";
 
@@ -6,7 +6,20 @@ import Header from "../components/Header";
 
 import { Link } from "react-router-dom";
 
+import { useDispatch, useSelector } from "react-redux";
+import { __loadPosts } from "../redux/modules/post";
+
 const Main = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(__loadPosts())
+  }, [dispatch]);
+
+  //{posts} 객체의비구조화 destructing
+  const { posts } = useSelector((state) => state.postReducer)
+  console.log(posts)
+
 
   return (
     <>
@@ -17,7 +30,6 @@ const Main = () => {
             <LogoImg src="/logo_1.png" />
           </WriteButton>
         </Link>
-
       </HomeBody>
     </>
   );
