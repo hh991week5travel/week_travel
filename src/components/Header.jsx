@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 
-import Button from '../elements/Button';
+import { deleteCookie } from '../shared/Cookie';
+
+import Buttons from '../elements/Buttons';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,7 +14,9 @@ import { actionCreators as userActions } from '../redux/modules/user';
 const Header = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const user = useSelector(state => state.user.user)
+    // const user = useSelector(state => state.user.user)
+    const localStoragetokenCheck = localStorage.getItem('token');
+
 
 
     return (
@@ -26,29 +30,24 @@ const Header = (props) => {
                     alt='logo' />
             </Link>
 
+
+
             <ButtonContainer>
-                <Button
+                <Buttons
                     text-size="16px"
                     width="120px"
-                    bg="#F9F7CF"
+                    bg="#5e8535"
                     _onClick={() => {
                         dispatch(userActions.logOut());
                         navigate('/')
+                        deleteCookie('token')
                     }}
                 >
                     <span size="20px">로그아웃</span>
-                </Button>
+                </Buttons>
             </ButtonContainer>
-
         </HeaderContainer>
-
-
-
-
-
-
     );
-
 };
 
 const HeaderContainer = styled.div`
