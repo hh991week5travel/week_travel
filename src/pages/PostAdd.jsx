@@ -2,12 +2,12 @@
 
 import React, { useRef } from 'react'
 import Header from '../components/Header'
-import Image from '../element/Image'
+import Image from '../components/ImageUpload'
 import Input from '../element/Input'
 import Content from '../element/Content'
 import Button from '../element/Button'
 import './PostAdd.css'
-import {Link} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { __addPost } from '../redux/modules/post'
 
@@ -15,11 +15,15 @@ import { __addPost } from '../redux/modules/post'
 const Post = () => {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const titleRef = useRef(null)
   const contentRef = useRef(null)
 
+
   const addPost = (e) => {
     dispatch(__addPost({title : titleRef.current.value, content : contentRef.current.value}))
+    window.alert('작성 완료')
+    navigate('/Main')
   }
 
   return (
@@ -34,9 +38,9 @@ const Post = () => {
       </div>
 
       <div className='footer'>
-        <Link to = {`/Main`}>
+
         <Button onClick={addPost}>작성 완료</Button>
-        </Link>
+
       </div>
 
   </>

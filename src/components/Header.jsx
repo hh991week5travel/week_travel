@@ -46,19 +46,8 @@ const Header = (props) => {
                     <span size="20px">로그아웃</span>
                 </Buttons>
             </ButtonContainer>
-
-
-
-
         </HeaderContainer>
-
-
-
-
-
-
     );
-
 };
 
 const HeaderContainer = styled.div`
