@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Button(props) {
+function Buttons(props) {
     const {
         width,
         height,
@@ -32,11 +32,11 @@ function Button(props) {
     );
 }
 
-Button.defaultProps = {
+Buttons.defaultProps = {
     width: '100%',
     height: '30px',
     text: '버튼',
-    bg: '#f9b937',
+    bg: '#ffffff',
     _onClick: () => { },
     is_circle: null,
     size: '14px',
@@ -48,9 +48,9 @@ const Btn = styled.button`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   background-color: ${(props) => props.bg};
-  border: none;
-  color: #fff;
-  font-weight: 900;
+  border: solid;
+  color: #f9b937;
+  font-weight: 800;
   margin: 5px 0;
   cursor: pointer;
   ${(props) =>
@@ -68,4 +68,4 @@ const Btn = styled.button`
             : ''};
   ${(props) => (props.is_disabled ? 'opacity:.3;' : 'opacity:1;')}
 `;
-export default Button;
+export default Buttons;
