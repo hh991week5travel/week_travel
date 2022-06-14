@@ -24,16 +24,15 @@ const Header = (props) => {
                     height="100px"
                     alt='logo' />
             </Link>
-
             <ButtonContainer>
                 <Buttons
                     text-size="16px"
                     width="120px"
-                    bg="#96663f"
+                    bg="#96663F"
                     _onClick={() => {
                         dispatch(userActions.logOut());
                         navigate('/')
-                        deleteCookie('token')
+                        deleteCookie('token')                         
                     }}
                 >
                     <span size="20px">로그아웃</span>

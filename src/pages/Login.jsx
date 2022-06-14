@@ -1,4 +1,5 @@
 // { "email":"test1234@google.com", "nickname":"테스트", "password":"qwer12345", "confirmPassword": "qwer12345" }
+
 import { emailCheck } from "../shared/SignUpCheck";
 import React from "react";
 import { useState, useEffect } from "react";
@@ -8,6 +9,7 @@ import { actionCreators as userActions } from "../redux/modules/user";
 
 // import Header from "../components/Header";
   const Login = (props) => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((user) => user);
@@ -22,12 +24,15 @@ import { actionCreators as userActions } from "../redux/modules/user";
       window.alert("이메일 형식이 맞지 않습니다.");
       return;
     }
+    
     dispatch(userActions.loginDB(email, password));
     console.log(user)
   };
+
   useEffect (() => {
     (user.user.is_login === true) ? navigate("/Main") : navigate("/Login")
   }, [user.user.is_login])
+
   return (
     <div>
       <p>

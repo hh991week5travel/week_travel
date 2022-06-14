@@ -1,19 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './Home.css'
+
+
 
 const Home = () => {
 
   return (
     <>
-      <Link to={'/Login'}>
-        <img src='logo_1.png'
-          back_size="100% 100%"
-          height="100%"
-          width="100%"
-          alt='logo' />
-      </Link>
-      <div>여행의민족</div>
+      <div className="bg">
+        <video autoPlay muted loop>
+          <source src='../../videos/GoldenDuck.mp4' type="video/mp4" />
+        </video>
+        <div className="text">
+          <Link to='/Login'>
+            <p>여행의민족</p>
+            <h3>-Click-</h3>
+          </Link>
+        </div>
+      </div>
     </>
+
+
 
 
 
