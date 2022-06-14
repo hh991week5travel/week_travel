@@ -72,6 +72,15 @@ export default handleActions(
 
         console.log("action.payload.user", action.payload.user);
       }),
+    [LOG_OUT]: (state, action) =>
+      produce(state, (draft) => {
+        deleteCookie("is_login");
+        localStorage.removeItem("nickname");
+        localStorage.removeItem("token");
+        draft.user = null;
+        draft.is_login = false;
+      }),
+
   },
   initialState
 );
@@ -80,8 +89,13 @@ export default handleActions(
 const actionCreators = {
   login,
   logOut,
+
   loginDB,
+
   loadTokenFB,
+
+  signUpDB,
+
 };
 
 export { actionCreators };
