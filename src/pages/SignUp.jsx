@@ -58,7 +58,7 @@ const SignUp = () => {
   // 이메일 중복 체크
   const dupEmail = async () => {
     const dupEmailRes = await axios.get(
-      `http://15.164.50.132/api/duplicatesemail/:${email}`
+      `http://15.164.50.132/api/duplicatesemail/${email}`
     );
     console.log(dupEmailRes);
   };
@@ -66,7 +66,7 @@ const SignUp = () => {
   // 닉네임 중복 체크
   const dupNick = async () => {
     const dupNickRes = await axios.get(
-      `http://15.164.50.132/api/duplicatesnick/:${nickname}`
+      `http://15.164.50.132/api/duplicatesnick/${nickname}`
     );
     console.log(dupNickRes);
   };
