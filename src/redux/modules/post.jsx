@@ -21,7 +21,7 @@ const deletePost = (payload) => {
   return {type : DELETE_POST, payload}
 }
 
-export const updatePost = (payload) => {
+const updatePost = (payload) => {
   return {type : UPDATE_POST, payload}
 }
 
@@ -29,13 +29,13 @@ export const updatePost = (payload) => {
 //thunk 함수 작성 (thunk 함수는 async(여기 들어오는 값은 함수!! 변수 아님!!!))
 export const __loadPosts = (token) => async(dispatch, getState) => {
   try {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/todos', {
+    const response = await axios.get("http://15.164.50.132/api/travel", {
       headers : {
         Authorization : token
       }
     });
     console.log(response) 
-    dispatch(loadPost(response.data))
+    // dispatch(loadPost(response.data))  37번째 콘솔 확인 후 들어오는 값에 맞춰서 38번째줄 작성하기!
   } catch(error){
     console.log(error)
   }
@@ -44,15 +44,17 @@ export const __loadPosts = (token) => async(dispatch, getState) => {
 export const __addPost = (payload) => async (dispatch, getState) => {
   const myToken = getCookie("Authorization");
   try{
-    const response = await axios.post('/posts', {
-      postId : payload.postId,
+    const response = await axios.post("http://15.164.50.132/api/travels",{
       title: payload.title, 
       content : payload.content,
       imgUrl : payload.imgUrl},
       {headers : {
         Authorization : myToken
       }});
-      dispatch(addPost(response.data));}
+      console.log(response)
+      window.alert('작성 완료')
+      // dispatch(addPost(response.data));  54번째 콘솔 확인 후 들어오는 값에 맞춰서 55번째줄 작성하기!
+    }
     catch(error){
       console.log(error)
   }
@@ -60,26 +62,44 @@ export const __addPost = (payload) => async (dispatch, getState) => {
 
 
 export const __deletePost = (payload) => async (dispatch, getState) => {
-  await axios.delete(`/posts/${Number(payload)}`);
-  dispatch(deletePost(payload));
+  const myToken = getCookie("Authorization");
+  try{
+      await axios.delete(`http://15.164.50.132/api/travels/${payload}`, {
+      headers : {
+        Authorization : myToken
+      }
+    });
+    dispatch(deletePost(payload));
+    window.alert('삭제 완료!!')
+  }
+  catch(error){
+    console.log(error)
+  }
 }
 
 export const __updatePost = (payload, index) => async (dispatch, getState) => {
-  const request = await axios.put(`/posts/${Number(index)}`, payload );
-  dispatch(updatePost(request.data))
+  try{
+    const response = await axios.patch(`http://15.164.50.132/api/travels/${index}`, {
+      title: payload.title, 
+      content : payload.content,
+      imgUrl : payload.imgUrl},
+      {
+      headers : {
+        Authorization : payload.token
+      }
+    });
+    console.log(response) 
+    window.alert('수정 완료!!')
+    // dispatch(updatePost(response)) 90번줄 콘솔 확인 후 91번째 줄 넣어주기
+  }
+  catch(error){
+    console.log(error)
+  }
 }
 
 //초깃값
 const initialState = {
-  posts : [
-    // {
-    //   nickname : null,
-    //   imageUrl : "",
-    //   postid : "1234",
-    //   title : "travel",
-    //   desc : "happy travel"
-    // }
-  ],
+  posts : [],
   loading: false,
   error: null
 };
@@ -93,18 +113,17 @@ const postReducer = (state = initialState, action) => {
 
     case LOAD_POST : return { ...state, posts : action.payload }
 
-    // case DELETE_POST:
-    //   const newDeletedPost = state.posts.filter((_, index) => { return index!== Number(action.payload);
-    //   }); return { ...state, list: [...newDeletedPost] };
+    case DELETE_POST:
+      const newDeletedPost = state.posts.filter((value, index) => { return value.boardId!== Number(action.payload);
+      }); return { ...state, list: [...newDeletedPost] };
 
-    //   case UPDATE_POST:
-    //     const newChangePost = state.posts.map((value) => {
-    //         return value.id === Number(action.payload.id) ? action.payload : value;
-    //     });
-    //     return { ...state, list: newChangePost };
+    case UPDATE_POST:
+      const newChangePost = state.posts.map((value) => {
+          //액션.페이로드에 같은 아이디 값이면 업데이트 진행!! 그게 아니면 원래 벨류 값 준다.
+        return value.boardId === Number(action.payload.boardId) ? action.payload : value;
+      });
+      return { ...state, list: newChangePost };
 
-
-    
     default:
       return state;
   }

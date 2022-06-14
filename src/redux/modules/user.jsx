@@ -1,7 +1,7 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
-import { setCookie, getCookie } from "../../shared/Cookie";
+import { setCookie, getCookie, deleteCookie } from "../../shared/Cookie";
 
 // action
 const LOG_IN = "LOGIN";
@@ -93,8 +93,6 @@ const actionCreators = {
   loginDB,
 
   loadTokenFB,
-
-  signUpDB,
 
 };
 

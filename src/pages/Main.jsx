@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
-import { __loadPosts } from "../redux/modules/post";
+import { useSelector } from "react-redux";
+// import { __loadPosts } from "../redux/modules/post";
 
 const Main = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
+  // const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(__loadPosts())
   // }, [dispatch]);
