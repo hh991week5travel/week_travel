@@ -20,15 +20,13 @@ const Post = () => {
   const titleRef = useRef(null)
   const contentRef = useRef(null)
 
-
   const addPost = (e) => {
     dispatch(__addPost({
       title : titleRef.current.value,
       content : contentRef.current.value,
       // imgUrl : imgUrl.current.value,
-      token : getCookie('token')
+      token : getCookie("Authorization")
     }))
-    window.alert('작성 완료')
     navigate('/Main')
   }
 
