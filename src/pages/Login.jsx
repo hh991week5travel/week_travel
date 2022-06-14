@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 
-import axios from "axios";
+import { actionCreators as userActions } from "../redux/modules/user";
 
 // import Header from "../components/Header";
 
@@ -20,22 +20,22 @@ const Login = (props) => {
   const login = () => {
     if (email === "" || password === "") {
       window.alert("아이디와 비밀번호를 입력해주세요.");
+      return;
     }
 
     if (!emailCheck(email)) {
       window.alert("이메일 형식이 맞지 않습니다.");
+      return;
     }
     dispatch(userActions.loginDB(email, password));
   };
 
   return (
-
-
     <div>
       <p>
         이메일 :{" "}
         <input
-          type="email"
+          type="text"
           value={email || ""}
           onChange={(event) => {
             setEmail(event.target.value);
@@ -46,7 +46,7 @@ const Login = (props) => {
       <p>
         비밀번호 :{" "}
         <input
-          type="password"
+          type="text"
           value={password || ""}
           onChange={(event) => {
             setPassword(event.target.value);
@@ -54,15 +54,13 @@ const Login = (props) => {
         />{" "}
       </p>
 
-      <button onClick={login} > 로그인 </button>
+      <button onClick={login}> 로그인 </button>
       <br />
 
       <Link to="/SignUp">
         <button> 회원가입 </button>
       </Link>
     </div>
-
-
   );
 };
 
