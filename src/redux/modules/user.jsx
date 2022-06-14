@@ -1,6 +1,9 @@
 import { createAction, handleActions } from "redux-actions";
+
 import { produce } from "immer";
+
 import axios from "axios";
+
 import { setCookie, getCookie, deleteCookie } from "../../shared/Cookie";
 
 // action
@@ -59,7 +62,6 @@ const loginDB = (email, password) => {
   };
 };
 
-
 //-----------------------reducer------------------------
 export default handleActions(
   {
@@ -72,7 +74,8 @@ export default handleActions(
 
         console.log("action.payload.user", action.payload.user);
       }),
-    [LOG_OUT]: (state, action) =>
+
+    [LOG_OUT]: (state) =>
       produce(state, (draft) => {
         deleteCookie("is_login");
         localStorage.removeItem("nickname");
@@ -80,7 +83,6 @@ export default handleActions(
         draft.user = null;
         draft.is_login = false;
       }),
-
   },
   initialState
 );
@@ -89,11 +91,8 @@ export default handleActions(
 const actionCreators = {
   login,
   logOut,
-
   loginDB,
-
   loadTokenFB,
-
 };
 
 export { actionCreators };

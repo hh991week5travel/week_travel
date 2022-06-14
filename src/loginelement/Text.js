@@ -41,21 +41,6 @@ const Input = (props) => {
   );
 };
 
-Input.defaultProps = {
-  disableed: false,
-  label: "",
-  placeholder: "텍스트를 입력하세용",
-  _onChange: () => {},
-  type: "text",
-  value: "",
-  autoComplete: "on",
-  height: "",
-  clickColor: "",
-  width: "",
-  id: "",
-  fontSize: "",
-};
-
 const SmallText = styled.small`
   color: #aaa;
   display: flex;
@@ -67,7 +52,7 @@ const InputField = styled.input`
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #ccc;
-  color: #555;
+  color: white;
   margin: 10px 0px;
   box-sizing: border-box;
   padding: 10px 0px;
