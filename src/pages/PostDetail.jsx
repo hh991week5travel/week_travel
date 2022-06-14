@@ -8,7 +8,10 @@ import Content from '../element/Content'
 import Button from '../element/Button'
 import {Link} from 'react-router-dom'
 
+
 const PostDetail = () => {
+
+
   return (
     <>
     <Header />

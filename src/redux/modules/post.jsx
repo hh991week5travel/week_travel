@@ -1,10 +1,11 @@
 import axios from "axios"
+import { getCookie } from "../../shared/Cookie"
 
 //액션 타입
 const ADD_POST = "ADD_POST"
 const LOAD_POST = "LOAD_POST"
-// const DELETE_POST = "DELETE_POST"
-// const UPDATE_POST = "UPDATE_POST"
+const DELETE_POST = "DELETE_POST"
+const UPDATE_POST = "UPDATE_POST"
 
 
 //액션 크리에이터
@@ -16,54 +17,57 @@ const loadPost = (payload) => {
   return {type : LOAD_POST, payload}
 }
 
-// const deletePost = (payload) => {
-//   return {type : DELETE_POST, payload}
-// }
+const deletePost = (payload) => {
+  return {type : DELETE_POST, payload}
+}
 
-// export const updatePost = (payload) => {
-//   return {type : UPDATE_POST, payload}
-// }
+export const updatePost = (payload) => {
+  return {type : UPDATE_POST, payload}
+}
 
 
 //thunk 함수 작성 (thunk 함수는 async(여기 들어오는 값은 함수!! 변수 아님!!!))
 export const __loadPosts = (token) => async(dispatch, getState) => {
   try {
-    const data = await axios.get('https://jsonplaceholder.typicode.com/todos', {
+    const response = await axios.get('https://jsonplaceholder.typicode.com/todos', {
       headers : {
         Authorization : token
       }
     });
-    console.log(data) 
-    dispatch(loadPost(data.data))
+    console.log(response) 
+    dispatch(loadPost(response.data))
   } catch(error){
     console.log(error)
   }
 }
 
 export const __addPost = (payload) => async (dispatch, getState) => {
-  
-  // const myToken = getCookie("Authorization");
-  // try{
-  //   const data = await axios.post('/posts', {title: payload.title, content : payload.content}, {
-  //     headers : {
-  //       Authorization : myToken
-  //     }
-  //   })
-  // } catch(error){
-  //     console.log(error)
-  // }
+  const myToken = getCookie("Authorization");
+  try{
+    const response = await axios.post('/posts', {
+      postId : payload.postId,
+      title: payload.title, 
+      content : payload.content,
+      imgUrl : payload.imgUrl},
+      {headers : {
+        Authorization : myToken
+      }});
+      dispatch(addPost(response.data));}
+    catch(error){
+      console.log(error)
+  }
 }
 
 
-// export const __deletePost = (payload) => async (dispatch, getState) => {
-//   await axios.delete(`/posts/${Number(payload)}`);
-//   dispatch(deletePost(payload));
-// }
+export const __deletePost = (payload) => async (dispatch, getState) => {
+  await axios.delete(`/posts/${Number(payload)}`);
+  dispatch(deletePost(payload));
+}
 
-// export const __updatePost = (payload, index) => async (dispatch, getState) => {
-//   const request = await axios.put(`/posts/${Number(index)}`, payload );
-//   dispatch(updatePost(request.data))
-// }
+export const __updatePost = (payload, index) => async (dispatch, getState) => {
+  const request = await axios.put(`/posts/${Number(index)}`, payload );
+  dispatch(updatePost(request.data))
+}
 
 //초깃값
 const initialState = {

@@ -3,16 +3,13 @@
 import { emailCheck } from "../shared/SignUpCheck";
 import React from "react";
 import { useState, useEffect } from "react";
-
 import { Link, useNavigate } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
-
 import { actionCreators as userActions } from "../redux/modules/user";
 
-
 // import Header from "../components/Header";
-const Login = (props) => {
+  const Login = (props) => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((user) => user);
@@ -35,7 +32,6 @@ const Login = (props) => {
   useEffect (() => {
     (user.user.is_login === true) ? navigate("/Main") : navigate("/Login")
   }, [user.user.is_login])
-
 
   return (
     <div>
