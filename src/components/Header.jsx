@@ -6,7 +6,7 @@ import { deleteCookie } from '../shared/Cookie';
 import Buttons from '../elements/Buttons';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { actionCreators as userActions } from '../redux/modules/user';
 
 
@@ -15,7 +15,6 @@ const Header = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     // const user = useSelector(state => state.user.user)
-    const localStoragetokenCheck = localStorage.getItem('token');
 
 
 
@@ -36,7 +35,7 @@ const Header = (props) => {
                 <Buttons
                     text-size="16px"
                     width="120px"
-                    bg="#5e8535"
+                    bg="#96663f"
                     _onClick={() => {
                         dispatch(userActions.logOut());
                         navigate('/')

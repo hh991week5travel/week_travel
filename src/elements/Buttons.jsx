@@ -12,7 +12,6 @@ function Buttons(props) {
         size,
         is_animation,
         is_disabled,
-        _id,
     } = props;
 
     const styles = {
@@ -50,9 +49,9 @@ const Btn = styled.button`
   background-color: ${(props) => props.bg};
   border: solid;
   color: #f9b937;
-  font-weight: 800;
-  margin: 5px 0;
-  cursor: pointer;
+  font-weight: 850;
+  padding: 0 10px;
+    cursor: pointer;
   ${(props) =>
         props.is_circle ? `border-radius: 50%;` : `border-radius: 5px;`}
   font-size: ${(props) => props.size};
