@@ -1,3 +1,5 @@
+ // { "email":"test1234@google.com", "nickname":"테스트", "password":"qwer12345", "confirmPassword": "qwer12345" }
+
 import { emailCheck } from "../shared/SignUpCheck";
 
 import React from "react";
@@ -8,9 +10,6 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { actionCreators as userActions } from '../redux/modules/user';
-
-import axios from "axios";
-
 
 // import Header from "../components/Header";
 

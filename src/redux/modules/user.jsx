@@ -56,24 +56,26 @@ const signUpDB = (email, nickname, password, confirmPassword) => {
 
 // 로그인
 const loginDB = (email, password) => {
+  console.log(email)
+  console.log(password)
   return function (dispatch) {
     axios
       .post("http://15.164.50.132/api/login", {
-        email,
-        password,
+        email : email,
+        password : password,
       })
       .then((response) => {
         console.log(response);
         dispatch(
           login({
             is_login: true,
-            token: response.headers.authorization,
+            token: response.data.token,
           })
         );
 
         setCookie(
           "Authorization",
-          response.headers.authorization.split(" ")[1]
+          response.data.token.split(" ")[1]
         );
         setCookie("email", email);
       })
