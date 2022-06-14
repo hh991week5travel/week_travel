@@ -9,6 +9,7 @@ import PostAdd from "./pages/PostAdd";
 import PostDetail from "./pages/PostDetail";
 import PostUpdate from "./pages/PostUpdate"
 import SignUp from "./pages/SignUp";
+import Error from "./pages/Error";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/PostAdd" element={<PostAdd />} />
           <Route path="/PostDetail" element={<PostDetail />} />
           <Route path="/PostUpdate" element={<PostUpdate />} />
+          <Route path="/Error" element={<Error />} />
         </Routes>
       </BrowserRouter>
     </>
