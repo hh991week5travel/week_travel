@@ -36,7 +36,7 @@ const Header = (props) => {
                         navigate('/')
                     }}
                 >
-                    <text size="20px">로그아웃</text>
+                    <span size="20px">로그아웃</span>
                 </Button>
             </ButtonContainer>
 

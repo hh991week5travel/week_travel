@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Header from '../components/Header'
-import Image from '../element/Image'
+import Image from '../components/ImageUpload'
 import Input from '../element/Input'
 import Content from '../element/Content'
 import Button from '../element/Button'

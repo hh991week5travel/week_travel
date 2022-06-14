@@ -1,9 +1,6 @@
 import axios from "axios"
 
 //액션 타입
-//[SERVER]
-
-//[POST]
 const ADD_POST = "ADD_POST"
 const LOAD_POST = "LOAD_POST"
 // const DELETE_POST = "DELETE_POST"
@@ -11,9 +8,6 @@ const LOAD_POST = "LOAD_POST"
 
 
 //액션 크리에이터
-//[SERVER]
-
-// [POST]
 const addPost = (payload) => {
   return {type : ADD_POST, payload}
 }
@@ -30,23 +24,43 @@ const loadPost = (payload) => {
 //   return {type : UPDATE_POST, payload}
 // }
 
+
 //thunk 함수 작성 (thunk 함수는 async(여기 들어오는 값은 함수!! 변수 아님!!!))
-export const __loadPosts = () => async(dispatch, getState) => { 
-  const data = await axios.get('https://jsonplaceholder.typicode.com/todos');
-    dispatch(loadPost(data))
+export const __loadPosts = (token) => async(dispatch, getState) => {
+  try {
+    const data = await axios.get('https://jsonplaceholder.typicode.com/todos', {
+      headers : {
+        Authorization : token
+      }
+    });
+    console.log(data) 
+    dispatch(loadPost(data.data))
+  } catch(error){
+    console.log(error)
+  }
 }
 
-export const __addPost = (payload) => async (dispatch, getState) =>{
-  const data = await axios.post('/posts', {title: payload.title, content : payload.content});
-  dispatch(addPost(data))
+export const __addPost = (payload) => async (dispatch, getState) => {
+  
+  // const myToken = getCookie("Authorization");
+  // try{
+  //   const data = await axios.post('/posts', {title: payload.title, content : payload.content}, {
+  //     headers : {
+  //       Authorization : myToken
+  //     }
+  //   })
+  // } catch(error){
+  //     console.log(error)
+  // }
 }
+
 
 // export const __deletePost = (payload) => async (dispatch, getState) => {
 //   await axios.delete(`/posts/${Number(payload)}`);
 //   dispatch(deletePost(payload));
 // }
 
-// export const __updatePost = (payload, index) => async (dispatch, getState) =>{
+// export const __updatePost = (payload, index) => async (dispatch, getState) => {
 //   const request = await axios.put(`/posts/${Number(index)}`, payload );
 //   dispatch(updatePost(request.data))
 // }
@@ -68,11 +82,12 @@ const initialState = {
 
 //리듀서
 const postReducer = (state = initialState, action) => {
+
   switch(action.type) {
 
-    case ADD_POST : return { ...state, posts : action.payload }
+    case ADD_POST : return { ...state, posts : [...state.posts, action.payload] }
 
-    case LOAD_POST : return { posts : action.payload }
+    case LOAD_POST : return { ...state, posts : action.payload }
 
     // case DELETE_POST:
     //   const newDeletedPost = state.posts.filter((_, index) => { return index!== Number(action.payload);
@@ -83,6 +98,8 @@ const postReducer = (state = initialState, action) => {
     //         return value.id === Number(action.payload.id) ? action.payload : value;
     //     });
     //     return { ...state, list: newChangePost };
+
+
     
     default:
       return state;

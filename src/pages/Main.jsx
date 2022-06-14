@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import styled from "styled-components";
 
@@ -6,15 +6,15 @@ import Header from "../components/Header";
 
 import { Link } from "react-router-dom";
 
-import { useDispatch, useSelector } from "react-redux";
-import { __loadPosts } from "../redux/modules/post";
+import { useSelector } from "react-redux";
+// import { __loadPosts } from "../redux/modules/post";
 
 const Main = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(__loadPosts())
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(__loadPosts())
+  // }, [dispatch]);
 
   //{posts} 객체의비구조화 destructing
   const { posts } = useSelector((state) => state.postReducer)
