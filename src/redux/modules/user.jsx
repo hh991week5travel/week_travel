@@ -61,8 +61,8 @@ const loginDB = (email, password) => {
   return function (dispatch) {
     axios
       .post("http://15.164.50.132/api/login", {
-        email : email,
-        password : password,
+        email: email,
+        password: password,
       })
       .then((response) => {
         console.log(response);
@@ -97,21 +97,30 @@ export default handleActions(
 
         console.log("action.payload.user", action.payload.user);
       }),
+    [LOG_OUT]: (state, action) =>
+      produce(state, (draft) => {
+        deleteCookie("is_login");
+        localStorage.removeItem("nickname");
+        localStorage.removeItem("token");
+        draft.user = null;
+        draft.is_login = false;
+      }),
+
   },
   initialState
 );
 
 //action creator export
 const actionCreators = {
-    login,
-    logOut,
+  login,
+  logOut,
 
-    loginDB,
+  loginDB,
 
-    loadTokenFB,
+  loadTokenFB,
 
-    signUpDB,
+  signUpDB,
 
-  };
+};
 
 export { actionCreators };
