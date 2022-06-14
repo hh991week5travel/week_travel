@@ -8,11 +8,11 @@ const Home = () => {
 
   return (
     <>
-      <div class="bg">
+      <div className="bg">
         <video autoPlay muted loop>
           <source src='../../videos/GoldenDuck.mp4' type="video/mp4" />
         </video>
-        <div class="text">
+        <div className="text">
           <Link to='/Login'>
             <p>여행의민족</p>
             <h3>-Click-</h3>
