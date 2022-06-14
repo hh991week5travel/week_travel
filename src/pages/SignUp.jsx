@@ -1,7 +1,7 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { actionCreators as userActions } from "../redux/modules/user";
@@ -10,9 +10,9 @@ import axios from "axios";
 
 import { emailCheck } from "../shared/SignUpCheck";
 
-const SignUp = () => {
+const SignUp = (props) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const [email, setEmail] = useState();
   const [nickname, setNickname] = useState();
@@ -27,7 +27,33 @@ const SignUp = () => {
     cfpw.current.innerText = "❌";
   }
 
-  const Submit = () => {
+  // 이메일 중복 체크
+  const dupEmail = async () => {
+    await axios
+      .get(`http://15.164.50.132/api/duplicatesemail/${email}`)
+      .then(() => {
+        window.alert("사용 가능한 아이디입니다.");
+      })
+      .catch((error) => {
+        window.alert("이미 사용중인 아이디입니다.");
+        console.log("Login Error", error);
+      });
+  };
+
+  // 닉네임 중복 체크
+  const dupNick = async () => {
+    await axios
+      .get(`http://15.164.50.132/api/duplicatesnick/${nickname}`)
+      .then(() => {
+        window.alert("사용 가능한 닉네임입니다.");
+      })
+      .catch((error) => {
+        window.alert("이미 사용중인 닉네임입니다.");
+        console.log("Login Error", error);
+      });
+  };
+
+  const Submit = async () => {
     //빈칸 확인
     if (
       email === "" ||
@@ -51,24 +77,22 @@ const SignUp = () => {
       return;
     }
 
-    dispatch(userActions.signUpDB(email, nickname, password, confirmPassword));
-    navigate("/Login");
-  };
-
-  // 이메일 중복 체크
-  const dupEmail = async () => {
-    const dupEmailRes = await axios.get(
-      `http://15.164.50.132/api/duplicatesemail/${email}`
-    );
-    console.log(dupEmailRes);
-  };
-
-  // 닉네임 중복 체크
-  const dupNick = async () => {
-    const dupNickRes = await axios.get(
-      `http://15.164.50.132/api/duplicatesnick/${nickname}`
-    );
-    console.log(dupNickRes);
+    await axios
+      .post("http://15.164.50.132/api/signup", {
+        email,
+        nickname,
+        password,
+        confirmPassword,
+      })
+      .then((res) => {
+        console.log(res);
+        window.alert("회원가입을 축하합니다!");
+        navigate("/Login")
+      })
+      .catch((error) => {
+        window.alert("아이디, 닉네임 또는 비밀번호를 확인해주세요.");
+        console.log("회원가입 DB Error", error);
+      });
   };
 
   return (
@@ -78,6 +102,7 @@ const SignUp = () => {
         <input
           type="email"
           value={email || ""}
+          placeholder="이메일 형식으로 작성"
           onChange={(event) => {
             setEmail(event.target.value);
           }}
@@ -90,6 +115,7 @@ const SignUp = () => {
         <input
           type="text"
           value={nickname || ""}
+          placeholder="영어 or 한글만 가능"
           onChange={(event) => {
             setNickname(event.target.value);
           }}
@@ -102,6 +128,7 @@ const SignUp = () => {
         <input
           type="password"
           value={password || ""}
+          placeholder="최소8글자"
           onChange={(event) => {
             setPassword(event.target.value);
           }}
@@ -113,6 +140,7 @@ const SignUp = () => {
         <input
           type="password"
           value={confirmPassword || ""}
+          placeholder="최소8글자"
           onChange={(event) => {
             setConfirmPassword(event.target.value);
           }}

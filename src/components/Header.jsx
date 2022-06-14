@@ -10,7 +10,6 @@ import { useDispatch } from 'react-redux';
 import { actionCreators as userActions } from '../redux/modules/user';
 
 
-
 const Header = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -28,18 +27,15 @@ const Header = (props) => {
                     height="100px"
                     alt='logo' />
             </Link>
-
-
-
             <ButtonContainer>
                 <Buttons
                     text-size="16px"
                     width="120px"
-                    bg="#96663f"
+                    bg="#96663F"
                     _onClick={() => {
                         dispatch(userActions.logOut());
                         navigate('/')
-                        deleteCookie('token')
+                        deleteCookie('token')                         
                     }}
                 >
                     <span size="20px">로그아웃</span>
