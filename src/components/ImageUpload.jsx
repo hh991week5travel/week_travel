@@ -6,12 +6,9 @@ function Image() {
   const [fileImage, setFileImage] = useState("");
   const imgRef = useRef(null);
 
-
   const saveFileImage = (e) => {
     setFileImage(URL.createObjectURL(e.target.files[0]))
-
   };
-
 
   return(
     <>
@@ -21,8 +18,6 @@ function Image() {
     </>
   )
 };
-
-
 
 
 export default Image;

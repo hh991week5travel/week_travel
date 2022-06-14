@@ -10,6 +10,7 @@ import './PostAdd.css'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { __addPost } from '../redux/modules/post'
+import { getCookie } from '../shared/Cookie'
 
 
 const Post = () => {
@@ -21,7 +22,12 @@ const Post = () => {
 
 
   const addPost = (e) => {
-    dispatch(__addPost({title : titleRef.current.value, content : contentRef.current.value}))
+    dispatch(__addPost({
+      title : titleRef.current.value,
+      content : contentRef.current.value,
+      // imgUrl : imgUrl.current.value,
+      token : getCookie('token')
+    }))
     window.alert('작성 완료')
     navigate('/Main')
   }
