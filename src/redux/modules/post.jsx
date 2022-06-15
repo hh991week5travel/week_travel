@@ -51,7 +51,7 @@ export const __addPost = (payload) => async (dispatch, getState) => {
     const response = await axios.post("http://15.164.50.132/api/travels", {
       title: payload.title,
       content: payload.content,
-      // imgUrl : payload.imgUrl
+      // imgUrl : fileInputRef.current?.url
     },
       {
         headers: {

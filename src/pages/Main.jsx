@@ -54,11 +54,11 @@ const Main = () => {
           ))}
         </PostBox> */}
           <div className="postView">
-            {posts.map( post => {
+            {posts?.map( post => {
               return <div key={post.boardId}>
-                <div>{post.title}</div>
-                <div>{post.nickName}</div>
-                <img src = {post.imgUrl} alt=''></img> 
+                <div>{post?.title}</div>
+                <div>{post?.nickname}</div>
+                <img src = {post?.imgUrl} alt=''></img> 
                 </div>
             })}
           </div>
