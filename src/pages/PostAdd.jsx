@@ -1,17 +1,15 @@
 //게시물 작성 페이지
-
-import React, { useRef } from "react";
-import Header from "../components/Header";
-import Image from "../components/ImageUpload";
-import Input from "../element/Input";
-import Content from "../element/Content";
-import Button from "../element/Button";
-import "./PostAdd.css";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { __addPost } from "../redux/modules/post";
-import { getCookie } from "../shared/Cookie";
+import React, { useRef } from 'react'
+import styled from 'styled-components'
+import Header from '../components/Header'
+import Image from '../components/ImageUpload'
+import Input from '../element/Input'
+import Content from '../element/Content'
+import Button from '../element/Button'
+import './PostAdd.css'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { __addPost } from '../redux/modules/post'
 
 const Post = () => {
   const dispatch = useDispatch();
@@ -20,16 +18,13 @@ const Post = () => {
   const contentRef = useRef(null);
 
   const addPost = (e) => {
-    dispatch(
-      __addPost({
-        title: titleRef.current.value,
-        content: contentRef.current.value,
-        // imgUrl : imgUrl.current.value,
-        token: getCookie("Authorization"),
-      })
-    );
-    navigate("/Main");
-  };
+    dispatch(__addPost({
+      title : titleRef.current.value,
+      content : contentRef.current.value,
+      // imgUrl : imgUrl.current.value
+    }))
+    navigate('/Main')
+  }
 
   return (
     <>
