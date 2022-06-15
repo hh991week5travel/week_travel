@@ -53,9 +53,7 @@ const PostUpdate = () => {
   };
 
   return (
-
     <>
-
       <div className="container" style={{ margin: "150px auto" }}>
         {fileImage && (
           <img

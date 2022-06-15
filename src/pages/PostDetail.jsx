@@ -1,7 +1,6 @@
 //게시물 상세 페이지
 
 import React, { useEffect } from "react";
-import Header from "../components/Header";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __deletePost, __loadDetail } from "../redux/modules/post";
@@ -48,13 +47,11 @@ const PostDetail = () => {
       <Container>
         <FlexBox>
           <ImgBox>
-            <img src={detail?.image} alt="" style={{ width: "400px" }} />
+            <img src={detail?.image} alt="" style={{ width: "430px" }} />
           </ImgBox>
           <DataBox>
             <Title>{detail?.title}</Title>
             <Content>{detail?.content}</Content>
-
-            <br />
             {loginUser === detail?.User?.nickname && (
               <>
                 <Link to={`/Post/Update/${detail.boardId}`}>
@@ -72,11 +69,12 @@ const PostDetail = () => {
 
 const Container = styled.div`
   width: fit-content;
-  height: 500px;
+  height: 520px;
   border-radius: 10px;
-  margin: 200px auto;
+  margin: 150px auto;
   display: flex;
-  padding-right: 40px;
+  justify-content:center;
+  align-items:center;
   background: rgb(222, 196, 228);
   box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
     rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
@@ -85,14 +83,15 @@ const Container = styled.div`
 const FlexBox = styled.div`
   display: flex;
   width: fit-content;
-  margin: 25px 5px;
+  margin: 25px 15px;
   background: white;
   border-radius: 10px;
-  padding: 0 20px;
+  padding: 0px ;
+  height: 470px;
 `;
 
 const ImgBox = styled.div`
-  width: 400px;
+  width: 430px;
   height: 450px;
   margin: 25px 5px;
   & > h2 {
@@ -121,7 +120,7 @@ const Title = styled.div`
 const Content = styled.div`
   background: rgb(248, 218, 243);
   width: 280px;
-  height: 200px;
+  height: 180px;
   border-radius: 5px;
   border: 1px solid #eee;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -137,7 +136,7 @@ const Button = styled.button`
   border: 1px solid #eee;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 10px;
-  margin: 3px auto;
+  margin: 5px auto;
 `;
 
 export default PostDetail;
