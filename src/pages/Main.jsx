@@ -28,40 +28,15 @@ const Main = () => {
         >
           <LogoImg src="/add_button.png" />
         </WriteButton>
-
-        {/* <PostBox>
-          {post_list?.map((cur, idx) => (
-            <Posts
-              key={idx}
-              onClick={() => {
-                history.push(`/detail/${cur.postId}`);
-              }}
-            >
-              <ImgBox src={cur.imageUrl} />
-              <TextBox>
-                <GoMegaphone />
-                <p style={{ marginLeft: "10px", fontWeight: "600" }}>
-                  {cur.title}
-                </p>
-              </TextBox>
-              <TextBox>
-                <GoMilestone />
-                <p style={{ marginLeft: "10px", fontSize: "13px" }}>
-                  {cur.location}
-                </p>
-              </TextBox>
-            </Posts>
-          ))}
-        </PostBox> */}
-          <div className="postView">
-            {posts.map( post => {
-              return <div key={post.boardId}>
-                <div>{post.title}</div>
-                <div>{post.nickName}</div>
-                <img src = {post.imgUrl} alt=''></img> 
-                </div>
-            })}
-          </div>
+        <div className="postView">
+          {posts.map(post => {
+            return <div key={post.boardId}>
+              <div>{post.title}</div>
+              <div>{post.nickName}</div>
+              <img src={post.imgUrl} alt=''></img>
+            </div>
+          })}
+        </div>
 
       </HomeBody>
     </>
