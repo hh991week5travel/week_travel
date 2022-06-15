@@ -21,8 +21,8 @@ const Main = () => {
 
   return (
     <>
-      <Header />
       <HomeBody>
+        <Header />
         <WriteButton
           onClick={() => {
             navigate("/Post/Add");
@@ -59,9 +59,10 @@ const Main = () => {
 };
 
 const HomeBody = styled.div`
-  height: 100vh;
+  height: 100vh;  
   background: url(../../background.jpg) center center no-repeat;
   background-size: cover;
+  padding: 0px;
 `;
 
 const LogoImg = styled.img`

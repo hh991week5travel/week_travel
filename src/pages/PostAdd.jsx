@@ -12,6 +12,8 @@ import { useDispatch } from 'react-redux'
 import { __addPost } from '../redux/modules/post'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { storage } from '../shared/firebase';
+import { Link } from "react-router-dom";
+
 
 const Post = () => {
   const dispatch = useDispatch();
@@ -19,6 +21,7 @@ const Post = () => {
   const titleRef = useRef(null);
   const contentRef = useRef(null);
   const register_imageRef = useRef();
+  
 
   const addPost = (e) => {
     dispatch(__addPost({
