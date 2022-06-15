@@ -60,9 +60,11 @@ const HomeBody = styled.div`
   background: url(../../background.jpg) center center no-repeat;
   background-size: cover;
 `;
+
 const LogoImg = styled.img`
   width: 100%;
 `;
+
 const WriteButton = styled.button`
   background: white;
   border: 3px solid #b2e1f4;
@@ -80,11 +82,12 @@ const WriteButton = styled.button`
 `;
 
 const PostBox = styled.div`
+  background: none;
   width: 1000px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 3em;
-  margin: 100px auto;
+  /* margin: 100px auto; */
   @media screen and (max-width: 1000px) {
     width: 100%;
     grid-template-columns: repeat(2, 2fr);
@@ -94,6 +97,7 @@ const PostBox = styled.div`
     grid-template-columns: repeat(1, 3fr);
   }
 `;
+
 const Posts = styled.div`
   width: 300px;
   height: 300px;
@@ -116,6 +120,7 @@ const ImgBox = styled.img`
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 `;
+
 const TextBox = styled.div`
   display: flex;
   width: fit-content;
