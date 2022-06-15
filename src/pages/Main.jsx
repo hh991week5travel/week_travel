@@ -18,11 +18,6 @@ const Main = () => {
 
   //{posts} 객체의비구조화 destructing
   const { posts } = useSelector((state) => state.postReducer);
-  // console.log(posts);
-
-  const postData = [
-    {nickName : '으헤헤', title : '제주도 여행', imgUrl : 'https://www.lottehotel.com/content/dam/lotte-hotel/lotte/jeju/overview/introduction/g-0807.jpg.thumb.768.768.jpg'},
-  ]
 
   return (
     <>
@@ -61,11 +56,11 @@ const Main = () => {
           ))}
         </PostBox> */}
           <div className="postView">
-            {postData.map( post => {
-              return <div>
+            {posts.map( post => {
+              return <div key={post.boardId}>
                 <div>{post.title}</div>
                 <div>{post.nickName}</div>
-                <img src = {post.imgUrl} alt=''></img>
+                <img src = {post.imgUrl} alt=''></img> 
                 </div>
             })}
           </div>
