@@ -21,14 +21,17 @@ const Post = () => {
   const register_imageRef = useRef();
 
   const addPost = (e) => {
-    dispatch(
-      __addPost({
-        title: titleRef.current.value,
-        content: contentRef.current.value,
-        imgUrl: register_imageRef.current.url,
-      })
-    );
-    navigate("/Main");
+    setTimeout(() => {
+      dispatch(
+        __addPost({
+          title: titleRef.current.value,
+          content: contentRef.current.value,
+          imgUrl: register_imageRef.current.url,
+        })
+      );
+      navigate("/Main");
+    }, 3000);
+    
   };
 
   const [fileImage, setFileImage] = useState("");
