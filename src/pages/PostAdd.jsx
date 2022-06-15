@@ -50,8 +50,7 @@ const Post = () => {
   return (
     <>
       <Header />
-      <HomeBody>
-        <div className="container">
+        <div className="container" style={{ margin : "150px auto"}}>
           {fileImage && (<img alt="sample" src={fileImage} style={{ margin: "auto", maxWidth: "300px", maxHeight: "300px" }} />)}
           <div style={{ alignItems: "center", justifyContent: "center" }} />
           <input type="file" placeholder='PICTURE' onChange={uploadFB} id="file" required />
@@ -64,15 +63,9 @@ const Post = () => {
         <div className="footer">
           <Button onClick={addPost}>작성 완료</Button>
         </div>
-      </HomeBody>
     </>
   );
 };
 
-const HomeBody = styled.div`
-  height: 100vh;
-  background: url(../../background.jpg) center center no-repeat;
-  background-size: cover;
-`;
 
 export default Post;

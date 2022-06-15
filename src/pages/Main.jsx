@@ -9,9 +9,9 @@ import { getCookie } from "../shared/Cookie";
 const Main = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const token = getCookie("Authorization")
+  const token = getCookie("Authorization");
 
-  console.log(token)
+  console.log(token);
   useEffect(() => {
     dispatch(__loadPosts(token));
   }, [dispatch]);
@@ -22,15 +22,6 @@ const Main = () => {
   return (
     <>
       <Header />
-      <HomeBody>
-        <WriteButton
-          onClick={() => {
-            navigate("/Post/Add");
-          }}
-        >
-          <LogoImg src="/add_button.png" />
-        </WriteButton>
-
         <PostBox>
           {posts?.map((post) => (
             <Posts
@@ -53,17 +44,16 @@ const Main = () => {
             </Posts>
           ))}
         </PostBox>
-      </HomeBody>
+        <WriteButton
+          onClick={() => {
+            navigate("/Post/Add");
+          }}
+        >
+          <LogoImg src="/add_button.png" />
+        </WriteButton>
     </>
   );
 };
-
-const HomeBody = styled.div`
-  height: 100vh;  
-  background: url(../../background.jpg) center center no-repeat;
-  background-size: cover;
-  padding: 0px;
-`;
 
 const LogoImg = styled.img`
   width: 100%;
@@ -91,7 +81,7 @@ const PostBox = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 3em;
-  /* margin: 100px auto; */
+  margin: 150px auto;
   @media screen and (max-width: 1000px) {
     width: 100%;
     grid-template-columns: repeat(2, 2fr);
