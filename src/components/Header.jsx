@@ -16,6 +16,7 @@ const Header = (props) => {
 
   return (
     <>
+    
       <HeaderContainer>
         <Link to="/Main" style={{ height: "100%", marginLeft: "10px" }}>
           <img
