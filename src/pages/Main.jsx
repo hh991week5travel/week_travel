@@ -32,8 +32,8 @@ const Main = () => {
           {posts.map(post => {
             return <div key={post.boardId}>
               <div>{post.title}</div>
-              <div>{post.nickName}</div>
-              <img src={post.imgUrl} alt=''></img>
+              <div>{post.nickname}</div>
+              <img src={post.image} alt=''></img>
             </div>
           })}
         </div>
