@@ -1,17 +1,16 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __loadPosts } from "../redux/modules/post";
-
 
 const Main = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(__loadPosts())
+    dispatch(__loadPosts());
   }, [dispatch]);
 
   //{posts} 객체의비구조화 destructing
@@ -53,8 +52,8 @@ const Main = () => {
             </Posts>
           ))}
         </PostBox> */}
-          <div className="postView">
-            {posts.map( post => {
+        <div className="postView">
+         {posts.map( post => {
               return <div key={post.boardId}>
                 <div>{post.title}</div>
                 <div>{post.nickName}</div>
