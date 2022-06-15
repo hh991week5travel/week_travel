@@ -4,13 +4,16 @@ import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __loadPosts } from "../redux/modules/post";
+import { getCookie } from "../shared/Cookie";
 
 const Main = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const token = getCookie("Authorization")
 
+  console.log(token)
   useEffect(() => {
-    dispatch(__loadPosts());
+    dispatch(__loadPosts(token));
   }, [dispatch]);
 
   //{posts} 객체의비구조화 destructing
