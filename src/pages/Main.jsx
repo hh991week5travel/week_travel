@@ -21,7 +21,6 @@ const Main = () => {
 
   return (
     <>
-      <Header />
       <PostBox>
         {posts?.map((post) => (
           <Posts
@@ -38,7 +37,7 @@ const Main = () => {
             </TextBox>
             <TextBox>
               <p style={{ marginLeft: "10px", fontSize: "13px" }}>
-                {post.User.nickname}
+                {post?.User?.nickname}
               </p>
             </TextBox>
           </Posts>
@@ -70,7 +69,7 @@ const WriteButton = styled.button`
   &:hover {
     transform: translate(10px, -15px);
   }
-  position: absolute;
+  position: fixed;
   bottom: 5%;
   right: 5%;
 `;
