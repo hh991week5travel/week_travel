@@ -27,7 +27,6 @@ const Main = () => {
         >
           <LogoImg src="/add_button.png" />
         </WriteButton>
-
         <PostBox>
           {posts?.map((post) => (
             <Posts
