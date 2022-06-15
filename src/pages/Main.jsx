@@ -33,7 +33,7 @@ const Main = () => {
             return <div key={post.boardId}>
               <div>{post.title}</div>
               <div>{post.nickName}</div>
-              <img src={post.imgUrl} alt=''></img>
+              <img src={post.image} alt=''></img>
             </div>
           })}
         </div>
