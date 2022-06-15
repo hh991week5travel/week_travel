@@ -15,7 +15,7 @@ const Header = (props) => {
   // const user = useSelector(state => state.user.user)
 
   return (
-    <>
+    <>    
       <HeaderContainer>
         <Link to="/Main" style={{ height: "100%", marginLeft: "10px" }}>
           <img
