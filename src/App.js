@@ -14,14 +14,9 @@ import Error from "./pages/Error";
 import Header from "./components/Header";
 
 function App() {
-  const localStoragetokenCheck = localStorage.getItem('Authorization');
-
   return (
     <>
-      {localStoragetokenCheck ? <Header /> : <></>
-      }
-
-      <BrowserRouter>
+           <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Main" element={<Main />} />
