@@ -57,7 +57,7 @@ export const __addPost = (payload) => async (dispatch, getState) => {
     const response = await axios.post("http://15.164.50.132/api/travels", {
       title: payload.title,
       content: payload.content,
-      image: payload.imgUrl
+      image: payload.image
     },
       {
         headers: {
@@ -91,20 +91,21 @@ export const __deletePost = (payload) => async (dispatch, getState) => {
 }
 
 export const __updatePost = (payload, index) => async (dispatch, getState) => {
+  console.log(payload)
   try {
-    const response = await axios.patch(`http://15.164.50.132/api/travels/${index}`, {
+    const response = await axios.patch(`http://15.164.50.132/api/travels/${payload.boardId}`, {
       title: payload.title,
       content: payload.content,
-      imgUrl: payload.imgUrl
+      image: payload.imgUrl
     },
       {
         headers: {
           Authorization: payload.token
         }
       });
-    console.log(response)
+    console.log(payload.boardId)
     window.alert('수정 완료!!')
-    // dispatch(updatePost(response)) 90번줄 콘솔 확인 후 91번째 줄 넣어주기
+    dispatch(updatePost(payload))
   }
   catch (error) {
     console.log(error)
@@ -155,11 +156,12 @@ console.log(action)
 
 
     case UPDATE_POST:
-      const newChangePost = state.posts.map((value) => {
-        //액션.페이로드에 같은 아이디 값이면 업데이트 진행!! 그게 아니면 원래 벨류 값 준다.
-        return value.boardId === Number(action.payload.boardId) ? action.payload : value;
-      });
-      return { ...state, posts: newChangePost };
+      return {...state, detail : action.payload}
+      // const newChangePost = state.posts.map((value) => {
+      //   //액션.페이로드에 같은 아이디 값이면 업데이트 진행!! 그게 아니면 원래 벨류 값 준다.
+      //   return value.boardId === Number(action.payload.boardId) ? action.payload : value;
+      // });
+      // return { ...state, posts: newChangePost };
 
       case LOAD_DETAIL:
         return {...state, detail : action.payload}
