@@ -1,4 +1,5 @@
 //게시물 작성 페이지
+
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
@@ -11,7 +12,6 @@ import { useDispatch } from "react-redux";
 import { __addPost } from "../redux/modules/post";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../shared/firebase";
-
 
 const Post = () => {
   const dispatch = useDispatch();
@@ -61,6 +61,7 @@ const Post = () => {
           id="file"
           required
         />
+
         <span>제목</span>
         <Input ref={titleRef} />
         <span>내용</span>

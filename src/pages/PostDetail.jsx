@@ -26,6 +26,7 @@ const PostDetail = () => {
 
   const user = useSelector((user) => user);
   const detail = useSelector((state) => state.postReducer?.detail?.postIdCheck);
+
   console.log(detail);
 
   const loginUser = getCookie("nickname");
@@ -136,7 +137,7 @@ const Button = styled.button`
   border: 1px solid #eee;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 10px;
-  margin: 3px auto
+  margin: 3px auto;
 `;
 
 export default PostDetail;
