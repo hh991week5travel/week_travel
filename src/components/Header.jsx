@@ -17,28 +17,26 @@ const Header = (props) => {
   return (
     <>
       <HeaderContainer>
-        <Link to="/Main">
+        {/* <ButtonContainer> */}
+        <Link to="/Main" style={{ height: "100%", marginLeft: "10px" }}>
           <img
-            src="logo_1.png"
+            src="logo_3.png"
             back_size="100% 100%"
-            height="100px"
             alt="logo"
+            style={{ height: "100%" }}
           />
         </Link>
-        <ButtonContainer>
-          <Buttons
-            text-size="16px"
-            width="120px"
-            bg="#96663F"
-            _onClick={() => {
-              dispatch(userActions.logOut());
-              navigate("/");
-              deleteCookie("token");
-            }}
-          >
-            <span size="20px">로그아웃</span>
-          </Buttons>
-        </ButtonContainer>
+        <Buttons
+          style={{ width: "100px", padding: "10px" }}
+          _onClick={() => {
+            dispatch(userActions.logOut());
+            navigate("/");
+            deleteCookie("token");
+          }}
+        >
+          logout
+        </Buttons>
+        {/* </ButtonContainer> */}
       </HeaderContainer>
     </>
   );
@@ -49,13 +47,14 @@ const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 90px;
-  border-bottom: 5px solid #ec524b;
-  background: #f9f7cf;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  min-width: 133px;
+  border-bottom: 3px solid #2e2727;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 40px);
+  padding: 20px;
+  height: 60px
 `;
 
 export default Header;

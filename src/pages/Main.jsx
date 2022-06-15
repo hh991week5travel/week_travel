@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-
 import styled from "styled-components";
 import Header from "../components/Header";
-
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { __loadPosts } from "../redux/modules/post";
@@ -28,7 +26,7 @@ const Main = () => {
             navigate("/PostAdd");
           }}
         >
-          <LogoImg src="/logo_1.png" />
+          <LogoImg src="/add_button.png" />
         </WriteButton>
 
         {/* <PostBox>
@@ -71,25 +69,27 @@ const Main = () => {
 };
 
 const HomeBody = styled.div`
-  width: 1000px;
-  margin: 90px auto;
+  height: 100vh;
+  background: url(../../background.jpg) center center no-repeat;
+  background-size: cover;
 `;
 const LogoImg = styled.img`
+  width: 100%;
+`;
+const WriteButton = styled.button`
+  background: white;
+  border: 3px solid #b2e1f4;
   width: 130px;
   height: 130px;
   border-radius: 130px;
-  border: 3px solid #b2e1f4;
-  background: white;
-`;
-const WriteButton = styled.button`
-  background: none;
-  border: none;
   cursor: pointer;
   transition: transform 300ms ease-in-out;
-
   &:hover {
     transform: translate(10px, -15px);
   }
+  position: absolute;
+  bottom: 5%;
+  right:5%;
 `;
 
 export default Main;
