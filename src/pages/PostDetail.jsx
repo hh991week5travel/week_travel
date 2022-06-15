@@ -2,19 +2,21 @@
 
 import React from 'react'
 import Header from '../components/Header'
-import Image from '../components/ImageUpload'
-import Input from '../element/Input'
-import Content from '../element/Content'
 import Button from '../element/Button'
 import {Link, useNavigate} from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { __deletePost } from '../redux/modules/post'
 import { getCookie } from '../shared/Cookie'
+
 
 
 const PostDetail = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const  user = useSelector((user) => user);
+  const { posts } = useSelector((state) => state.postReducer);
+  console.log(posts.nickname)
 
   const removePost = () => {
     dispatch(__deletePost({
@@ -23,23 +25,29 @@ const PostDetail = () => {
     navigate('/Main')
   }
 
-  return (
+  return(
     <>
-    <Header />
+      <Header />
       <div className='container'>
-      <Image />
-      <span>제목</span>
-      <Input />
-      <span>내용</span>
-      <Content />
-      </div>
-
-        <div className='footer'>
-          <Link to = {`/PostUpdate/`}>
-            <Button>수정</Button>
-          </Link>
+        {posts?.filter((post) => {
+          return <>
+            <img src={post.image} alt='' />
+            <span>제목</span>
+            <p>{post.title}</p>
+            <span>내용</span>
+            <p>{post.content}</p>
+          </>
+        }
+        )}
+        {user.user.is_login === posts.nickname &&
+          <div className='footer'>
+            <Link to={`/PostUpdate/`}>
+              <Button>수정</Button>
+            </Link>
             <Button onClick={removePost}>삭제</Button>
-        </div>
+          </div>
+        }
+      </div>
     </>
   )
 }
