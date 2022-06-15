@@ -17,7 +17,7 @@ const Header = (props) => {
   return (
     <>
       <HeaderContainer>
-        {/* <ButtonContainer> */}
+        
         <Link to="/Main" style={{ height: "100%", marginLeft: "10px" }}>
           <img
             src="logo_3.png"
@@ -36,7 +36,7 @@ const Header = (props) => {
         >
           logout
         </Buttons>
-        {/* </ButtonContainer> */}
+        
       </HeaderContainer>
     </>
   );
