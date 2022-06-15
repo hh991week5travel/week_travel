@@ -15,9 +15,8 @@ const Header = (props) => {
   // const user = useSelector(state => state.user.user)
 
   return (
-    <>
+    <>    
       <HeaderContainer>
-        {/* <ButtonContainer> */}
         <Link to="/Main" style={{ height: "100%", marginLeft: "10px" }}>
           <img
             src="logo_3.png"
@@ -36,7 +35,6 @@ const Header = (props) => {
         >
           logout
         </Buttons>
-        {/* </ButtonContainer> */}
       </HeaderContainer>
     </>
   );
@@ -49,12 +47,12 @@ const HeaderContainer = styled.div`
   height: 90px;
   border-bottom: 3px solid #2e2727;
   background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: calc(100% - 40px);
   padding: 20px;
-  height: 60px
+  height: 60px;
 `;
 
 export default Header;

@@ -21,12 +21,14 @@ function Image() {
 
   return (
     <>
+
       {fileImage && (<img alt="sample" src={fileImage} style={{ margin: "auto", maxWidth: "300px", maxHeight: "300px" }} />)}
       <div style={{ alignItems: "center", justifyContent: "center" }} />
-      <input type="file" placeholder='PICTURE' onChange={uploadFB} id="file" required />
-    </>
+      <input type="file" placeholder='PICTURE' onChange={uploadFB} id="file" required />    </>
   )
 };
+
+
 
 
 export default Image;

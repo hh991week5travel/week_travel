@@ -28,6 +28,7 @@ const updatePost = (payload) => {
 
 //thunk 함수 작성 (thunk 함수는 async(여기 들어오는 값은 함수!! 변수 아님!!!))
 export const __loadPosts = (token) => async (dispatch, getState) => {
+  console.log(token)
   try {
     const response = await axios.get("http://15.164.50.132/api/travel", {
       headers: {
@@ -46,7 +47,7 @@ export const __loadPosts = (token) => async (dispatch, getState) => {
 export const __addPost = (payload) => async (dispatch, getState) => {
   console.log(payload)
   const myToken = getCookie("Authorization");
-
+  console.log(myToken)
   try {
     const response = await axios.post("http://15.164.50.132/api/travels", {
       title: payload.title,

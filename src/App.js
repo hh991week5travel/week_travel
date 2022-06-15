@@ -7,14 +7,20 @@ import Login from "./pages/Login";
 import Main from "./pages/Main";
 import PostAdd from "./pages/PostAdd";
 import PostDetail from "./pages/PostDetail";
-import PostUpdate from "./pages/PostUpdate"
+import PostUpdate from "./pages/PostUpdate";
 import SignUp from "./pages/SignUp";
 import Error from "./pages/Error";
 
+import Header from "./components/Header";
 
 function App() {
+  const localStoragetokenCheck = localStorage.getItem('Authorization');
+
   return (
     <>
+      {localStoragetokenCheck ? <Header /> : <></>
+      }
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
