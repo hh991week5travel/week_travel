@@ -37,7 +37,6 @@ const Main = () => {
             </div>
           })}
         </div>
-
       </HomeBody>
     </>
   );
