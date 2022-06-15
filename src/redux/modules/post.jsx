@@ -52,6 +52,7 @@ export const __addPost = (payload) => async (dispatch, getState) => {
       title: payload.title,
       content: payload.content,
       image: payload.imgUrl
+
     },
       {
         headers: {
