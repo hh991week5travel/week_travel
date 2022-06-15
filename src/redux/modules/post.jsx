@@ -77,7 +77,7 @@ export const __deletePost = (payload) => async (dispatch, getState) => {
         Authorization: myToken
       }
     });
-    dispatch(deletePost(payload));
+    dispatch(deletePost(payload.boardId));
     window.alert('삭제 완료!!')
   }
   catch (error) {
