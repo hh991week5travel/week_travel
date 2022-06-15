@@ -33,13 +33,12 @@ const PostUpdate = () => {
       token: getCookie("Authorization")
     }, borderId))
     //30번째 index 자리에는 서버에서 주는 id값을 useSelecter를 활용해서 가져오자
-    navigate('/postDetail')
+    navigate('/Main')
   }
 
   return (
     <>
-      <Header />
-      <div className='container'>
+      <div className='container' style={{ margin: "150px auto"}}>
         <Image />
         <span>제목</span>
         <Input ref={titleRef} />

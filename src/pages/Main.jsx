@@ -21,36 +21,35 @@ const Main = () => {
 
   return (
     <>
-      <Header />
-        <PostBox>
-          {posts?.map((post) => (
-            <Posts
-              key={post.boardId}
-              onClick={() => {
-                navigate(`/Post/Detail/${post.boardId}`);
-              }}
-            >
-              <ImgBox src={post.image} />
-              <TextBox>
-                <p style={{ marginLeft: "10px", fontWeight: "600" }}>
-                  {post.title}
-                </p>
-              </TextBox>
-              <TextBox>
-                <p style={{ marginLeft: "10px", fontSize: "13px" }}>
-                  {post.nickname}
-                </p>
-              </TextBox>
-            </Posts>
-          ))}
-        </PostBox>
-        <WriteButton
-          onClick={() => {
-            navigate("/Post/Add");
-          }}
-        >
-          <LogoImg src="/add_button.png" />
-        </WriteButton>
+      <PostBox>
+        {posts?.map((post) => (
+          <Posts
+            key={post.boardId}
+            onClick={() => {
+              navigate(`/Post/Detail/${post.boardId}`);
+            }}
+          >
+            <ImgBox src={post.image} />
+            <TextBox>
+              <p style={{ marginLeft: "10px", fontWeight: "600" }}>
+                {post.title}
+              </p>
+            </TextBox>
+            <TextBox>
+              <p style={{ marginLeft: "10px", fontSize: "13px" }}>
+                {post?.User?.nickname}
+              </p>
+            </TextBox>
+          </Posts>
+        ))}
+      </PostBox>
+      <WriteButton
+        onClick={() => {
+          navigate("/Post/Add");
+        }}
+      >
+        <LogoImg src="/add_button.png" />
+      </WriteButton>
     </>
   );
 };
@@ -70,7 +69,7 @@ const WriteButton = styled.button`
   &:hover {
     transform: translate(10px, -15px);
   }
-  position: absolute;
+  position: fixed;
   bottom: 5%;
   right: 5%;
 `;
