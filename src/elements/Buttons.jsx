@@ -32,10 +32,9 @@ function Buttons(props) {
 }
 
 Buttons.defaultProps = {
-  width: "100%",
   height: "30px",
   text: "버튼",
-  bg: "#ffffff",
+  bg: "rgba(225,225,225,0.2)",
   _onClick: () => {},
   is_circle: null,
   size: "14px",
@@ -48,7 +47,7 @@ const Btn = styled.button`
   height: ${(props) => props.height};
   background-color: ${(props) => props.bg};
   border: solid;
-  color: #f9b937;
+  color: "rgba(225,225,225,0.2)";
   font-weight: 850;
   padding: 0 10px;
   cursor: pointer;
