@@ -52,7 +52,7 @@ const loginDB = (email, password) => {
             token: response.data.token,
           })
         );
-        setCookie("Authorization", response.data.token.split(" ")[1]);
+        setCookie("Authorization", response.data.token);
         setCookie("email", email);
       })
       .catch((error) => {
