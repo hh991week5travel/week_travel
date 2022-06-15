@@ -1,17 +1,16 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __loadPosts } from "../redux/modules/post";
-
 
 const Main = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(__loadPosts())
+    dispatch(__loadPosts());
   }, [dispatch]);
 
   //{posts} 객체의비구조화 destructing
@@ -23,20 +22,34 @@ const Main = () => {
       <HomeBody>
         <WriteButton
           onClick={() => {
-            navigate("/PostAdd");
+            navigate("/Post/Add");
           }}
         >
           <LogoImg src="/add_button.png" />
         </WriteButton>
-        <div className="postView">
-          {posts.map(post => {
-            return <div key={post.boardId}>
-              <div>{post.title}</div>
-              <div>{post.nickname}</div>
-              <img src={post.image} alt=''></img>
-            </div>
-          })}
-        </div>
+
+        <PostBox>
+          {posts?.map((post) => (
+            <Posts
+              key={post.boardId}
+              onClick={() => {
+                navigate(`/Post/Detail/${post.boardId}`);
+              }}
+            >
+              <ImgBox src={post.image} />
+              <TextBox>
+                <p style={{ marginLeft: "10px", fontWeight: "600" }}>
+                  {post.title}
+                </p>
+              </TextBox>
+              <TextBox>
+                <p style={{ marginLeft: "10px", fontSize: "13px" }}>
+                  {post.nickname}
+                </p>
+              </TextBox>
+            </Posts>
+          ))}
+        </PostBox>
       </HomeBody>
     </>
   );
@@ -63,7 +76,51 @@ const WriteButton = styled.button`
   }
   position: absolute;
   bottom: 5%;
-  right:5%;
+  right: 5%;
+`;
+
+const PostBox = styled.div`
+  width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 3em;
+  margin: 100px auto;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    grid-template-columns: repeat(2, 2fr);
+  }
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    grid-template-columns: repeat(1, 3fr);
+  }
+`;
+const Posts = styled.div`
+  width: 300px;
+  height: 300px;
+  background: white;
+  margin: auto;
+  border-radius: 5px;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  transition: transform 300ms ease-in-out;
+
+  &:hover {
+    transform: translate(5px, -20px);
+  }
+`;
+
+const ImgBox = styled.img`
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+`;
+const TextBox = styled.div`
+  display: flex;
+  width: fit-content;
+  height: 35px;
+  margin: 10px;
 `;
 
 export default Main;
