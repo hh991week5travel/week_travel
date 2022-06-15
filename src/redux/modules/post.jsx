@@ -42,18 +42,20 @@ export const __loadPosts = (token) => async(dispatch, getState) => {
 }
 
 export const __addPost = (payload) => async (dispatch, getState) => {
+  console.log(payload)
   const myToken = getCookie("Authorization");
   try{
     const response = await axios.post("http://15.164.50.132/api/travels",{
       title: payload.title, 
       content : payload.content,
-      imgUrl : payload.imgUrl},
+      // imgUrl : payload.imgUrl
+    },
       {headers : {
         Authorization : myToken
       }});
       console.log(response)
       window.alert('작성 완료')
-      // dispatch(addPost(response.data));  54번째 콘솔 확인 후 들어오는 값에 맞춰서 55번째줄 작성하기!
+      dispatch(addPost(response.data));  
     }
     catch(error){
       console.log(error)
@@ -115,14 +117,14 @@ const postReducer = (state = initialState, action) => {
 
     case DELETE_POST:
       const newDeletedPost = state.posts.filter((value, index) => { return value.boardId!== Number(action.payload);
-      }); return { ...state, list: [...newDeletedPost] };
+      }); return { ...state, posts : [...newDeletedPost] };
 
     case UPDATE_POST:
       const newChangePost = state.posts.map((value) => {
           //액션.페이로드에 같은 아이디 값이면 업데이트 진행!! 그게 아니면 원래 벨류 값 준다.
         return value.boardId === Number(action.payload.boardId) ? action.payload : value;
       });
-      return { ...state, list: newChangePost };
+      return { ...state, posts : newChangePost };
 
     default:
       return state;

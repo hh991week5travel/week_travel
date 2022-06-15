@@ -10,7 +10,6 @@ import './PostAdd.css'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { __addPost } from '../redux/modules/post'
-import { getCookie } from '../shared/Cookie'
 
 
 const Post = () => {
@@ -24,8 +23,7 @@ const Post = () => {
     dispatch(__addPost({
       title : titleRef.current.value,
       content : contentRef.current.value,
-      // imgUrl : imgUrl.current.value,
-      token : getCookie("Authorization")
+      // imgUrl : imgUrl.current.value
     }))
     navigate('/Main')
   }

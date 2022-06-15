@@ -1,24 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styled from "styled-components";
 import Header from "../components/Header";
 
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from "react-redux";
-// import { __loadPosts } from "../redux/modules/post";
+import { useDispatch, useSelector } from "react-redux";
+import { __loadPosts } from "../redux/modules/post";
 
 
 const Main = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(__loadPosts())
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(__loadPosts())
+  }, [dispatch]);
 
   //{posts} 객체의비구조화 destructing
   const { posts } = useSelector((state) => state.postReducer);
-  console.log(posts);
+  // console.log(posts);
+
+  const postData = [
+    {nickName : '으헤헤', title : '제주도 여행', imgUrl : 'https://www.lottehotel.com/content/dam/lotte-hotel/lotte/jeju/overview/introduction/g-0807.jpg.thumb.768.768.jpg'},
+  ]
 
   return (
     <>
@@ -56,6 +60,16 @@ const Main = () => {
             </Posts>
           ))}
         </PostBox> */}
+          <div className="postView">
+            {postData.map( post => {
+              return <div>
+                <div>{post.title}</div>
+                <div>{post.nickName}</div>
+                <img src = {post.imgUrl} alt=''></img>
+                </div>
+            })}
+          </div>
+
       </HomeBody>
     </>
   );
