@@ -19,7 +19,6 @@ const Main = () => {
   return (
     <>
       <HomeBody>
-        <Header />
         <WriteButton
           onClick={() => {
             navigate("/Post/Add");
