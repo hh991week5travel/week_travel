@@ -21,6 +21,7 @@ const Main = () => {
 
   return (
     <>
+      <Header />
       <HomeBody>
         <WriteButton
           onClick={() => {
