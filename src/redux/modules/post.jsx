@@ -6,6 +6,7 @@ const ADD_POST = "ADD_POST"
 const LOAD_POST = "LOAD_POST"
 const DELETE_POST = "DELETE_POST"
 const UPDATE_POST = "UPDATE_POST"
+const LOAD_DETAIL = "LOAD_DETAIL"
 
 
 //액션 크리에이터
@@ -23,6 +24,10 @@ const deletePost = (payload) => {
 
 const updatePost = (payload) => {
   return { type: UPDATE_POST, payload }
+}
+
+const loadDetail = (payload) => {
+  return {type: LOAD_DETAIL, payload}
 }
 
 
@@ -106,16 +111,34 @@ export const __updatePost = (payload, index) => async (dispatch, getState) => {
   }
 }
 
+export const __loadDetail = (payload) => async (dispatch, getState) => {
+  console.log(payload)
+  try {
+    const response = await axios.get(`http://15.164.50.132/api/travels/${payload.boardId}`, {
+      headers: {
+        Authorization: payload.token
+      }
+    });
+    console.log(response)
+    dispatch(loadDetail(response.data))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 //초깃값
 const initialState = {
   posts: [],
   loading: false,
-  error: null
+  error: null,
+  detail : null
 };
+
+
 
 //리듀서
 const postReducer = (state = initialState, action) => {
-
+console.log(action)
   switch (action.type) {
 
     case ADD_POST: return { ...state, posts: [...state.posts, action.payload] }
@@ -137,6 +160,9 @@ const postReducer = (state = initialState, action) => {
         return value.boardId === Number(action.payload.boardId) ? action.payload : value;
       });
       return { ...state, posts: newChangePost };
+
+      case LOAD_DETAIL:
+        return {...state, detail : action.payload}
 
     default:
       return state;

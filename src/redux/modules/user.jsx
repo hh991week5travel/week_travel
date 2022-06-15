@@ -53,7 +53,7 @@ const loginDB = (email, password) => {
           })
         );
         setCookie("Authorization", response.data.token);
-        setCookie("email", email);
+        setCookie("nickname", response.data.nickname);
       })
       .catch((error) => {
         window.alert("아이디 또는 비밀번호를 확인해주세요.");
