@@ -4,8 +4,16 @@
 
 2022.06.10 - 2022.06.16
 
+##내용
+🎉코로나로 끝나가는 이 시기에 다시금 여행에 대한 설렘이 살아날 수 있도록 자신이 갔던 여행지의 정보와 후기등을 공유하는 사이트
+🎉누군가에게는 여행지에 대한 정보가 될 수 있고, 누군가에게는 자신이 갔던 여행지의 즐거움을 한번 더 기억하게 되는 그런 사이트를 만들고 싶어서 제작하게 되었습니다.
 
-<div><h1>📚 STACKS</h1></div>   
+## 😎 여행의 민족을 제작한 자랑스러운 개발자들
+👉 BE : 강명지, 박선우, 김성현
+👉 FE : 임운철, 정대규, 장세화
+
+
+<div><h1>🛠STACKS🛠</h1></div>   
 <div align=center> 
    <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
   <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
@@ -18,6 +26,11 @@
   <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=pink">   
   <img src="https://img.shields.io/badge/amazons3-569A31?style=for-the-badge&logo=amazons3&logoColor=green">     
 </div>
+
+##API 명세서
+
+![1](https://user-images.githubusercontent.com/105141025/174037627-70c9f058-e93a-4a35-a529-6562a298c429.png)
+![2](https://user-images.githubusercontent.com/105141025/174037641-b7fc02b4-1ba1-4e53-9e69-0eb885c63683.png)
 
 ## 기능
 
