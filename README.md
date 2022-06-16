@@ -58,3 +58,26 @@
 
 ## 초기설정
 
+```bash
+$ yarn add react@18.1.0
+
+$ yarn add react-router-dom
+
+$ yarn add styled-components
+
+$ yarn add redux react-redux redux-thunk redux-logger redux-actions redux-devtools-extension
+ 
+$ yarn add enhancer
+
+$ yarn add connected-react-router
+
+$ yarn add axios
+
+$ yarn add firebase@9.8.3
+
+$ yarn add storage
+```
+
+## 결과
+
+[여행의민족](http://goldenduck3.s3-website.ap-northeast-2.amazonaws.com)
