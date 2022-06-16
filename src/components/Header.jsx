@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { deleteCookie } from "../shared/Cookie";
 
-import Buttons from "../elements/Buttons";
+import Buttons from "../loginelement/Buttons";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -15,7 +15,7 @@ const Header = (props) => {
   // const user = useSelector(state => state.user.user)
 
   return (
-    <>    
+    <>
       <HeaderContainer>
         <Link to="/Main" style={{ height: "100%", marginLeft: "10px" }}>
           <img
