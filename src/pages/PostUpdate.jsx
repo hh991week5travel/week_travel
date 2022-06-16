@@ -1,7 +1,6 @@
 //게시물 수정 페이지
 
 import React, { useRef, useState } from "react";
-
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
