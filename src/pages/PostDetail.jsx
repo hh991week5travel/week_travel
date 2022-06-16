@@ -47,7 +47,7 @@ const PostDetail = () => {
       <Container>
         <FlexBox>
           <ImgBox>
-            <img src={detail?.image} alt="" style={{ width: "430px" }} />
+            <img src={detail?.image} alt="" style={{ width: "430px", height: "430px"}} />
           </ImgBox>
           <DataBox>
             <Title>{detail?.title}</Title>
@@ -71,7 +71,7 @@ const Container = styled.div`
   width: fit-content;
   height: 520px;
   border-radius: 10px;
-  margin: 150px auto;
+  margin: 170px auto;
   display: flex;
   justify-content:center;
   align-items:center;
@@ -93,6 +93,7 @@ const FlexBox = styled.div`
 const ImgBox = styled.div`
   width: 430px;
   height: 450px;
+  object-fit: cover;
   margin: 25px 5px;
   & > h2 {
     font-family: "Gugi";
