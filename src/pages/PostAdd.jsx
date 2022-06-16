@@ -1,8 +1,6 @@
 //게시물 작성 페이지
 
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
-import Header from "../components/Header";
 import Input from "../element/Input";
 import Content from "../element/Content";
 import Button from "../element/Button";

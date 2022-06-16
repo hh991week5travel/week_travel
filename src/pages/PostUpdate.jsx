@@ -1,7 +1,6 @@
 //게시물 수정 페이지
 
 import React, { useRef, useState } from "react";
-import Header from "../components/Header";
 import Input from "../element/Input";
 import Content from "../element/Content";
 import Button from "../element/Button";
