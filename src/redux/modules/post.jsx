@@ -140,7 +140,6 @@ const initialState = {
 
 //리듀서
 const postReducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case ADD_POST:
       return { ...state, posts: [...state.posts, action.payload] };

@@ -23,6 +23,9 @@ const Home = () => {
             <Link to="/Login">
               <img src="../../travel.png" />
             </Link>
+            <UX>
+              <img></img>
+            </UX>
           </div>
         </div>
       </Container>
